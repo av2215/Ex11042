@@ -11,7 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author itay vaknin av2215@bs.amalnet.k12.il
+ * @version 1.0
+ * @since 22/03/2026
  * Database helper class for managing expenditure data in SQLite.
+ * Provides methods for CRUD operations, searching, and monthly totals.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
@@ -26,10 +30,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CATEGORY = "Category";
     public static final String COLUMN_DATE = "Date";
 
+    /**
+     * Constructor for DatabaseHelper.
+     * <p>
+     *
+     * @param context The current context.
+     */
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * Creates the expenditures table.
+     * <p>
+     *
+     * @param db The database.
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (" +
@@ -42,6 +58,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
     }
 
+    /**
+     * Handles database upgrades by dropping and recreating the table.
+     * <p>
+     *
+     * @param db The database.
+     * @param oldVersion The old database version.
+     * @param newVersion The new database version.
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
@@ -50,8 +74,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Adds a new expenditure record.
+     * <p>
+     *
      * @param expenditure The expenditure object to add.
-     * @return The ID of the newly inserted row.
+     * @return long The ID of the newly inserted row.
      */
     public long addExpenditure(Expenditure expenditure) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -66,8 +92,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Updates an existing expenditure record.
+     * <p>
+     *
      * @param expenditure The expenditure object with updated data.
-     * @return Number of rows affected.
+     * @return int Number of rows affected.
      */
     public int updateExpenditure(Expenditure expenditure) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -81,6 +109,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Deletes an expenditure record by ID.
+     * <p>
+     *
      * @param id The ID of the record to delete.
      */
     public void deleteExpenditure(int id) {
@@ -90,7 +120,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Retrieves all expenditures sorted by date (newest to oldest).
-     * @return List of expenditures.
+     * <p>
+     *
+     * @return List<Expenditure> List of expenditures.
      */
     public List<Expenditure> getAllExpenditures() {
         List<Expenditure> list = new ArrayList<>();
@@ -114,11 +146,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Performs a search and filter on expenditures.
+     * <p>
+     *
      * @param desc Search term for description.
      * @param min Min amount.
      * @param max Max amount.
      * @param sortBy Column to sort by.
-     * @return Filtered list of expenditures.
+     * @return List<Expenditure> Filtered list of expenditures.
      */
     public List<Expenditure> searchExpenditures(String desc, Double min, Double max, String sortBy) {
         List<Expenditure> list = new ArrayList<>();
@@ -158,7 +192,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Calculates the total expenses for the current month.
-     * @return Sum of amounts for current month.
+     * <p>
+     *
+     * @return double Sum of amounts for current month.
      */
     public double getTotalMonthlyExpenses() {
         SQLiteDatabase db = this.getReadableDatabase();

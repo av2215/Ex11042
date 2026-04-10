@@ -17,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 /**
+ * @author itay vaknin av2215@bs.amalnet.k12.il
+ * @version 1.0
+ * @since 22/03/2026
  * Screen for adding or editing an expenditure record.
  * Includes validation and date selection.
  */
@@ -31,6 +34,12 @@ public class ExpenditureActivity extends AppCompatActivity {
     // Predefined categories as requested
     private final String[] categories = {"Food", "Entertainment", "Transport", "Bills", "Other"};
 
+    /**
+     * Initializes the activity, UI components, and sets up listeners.
+     * <p>
+     *
+     * @param savedInstanceState Bundle containing the activity's previously saved state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +82,8 @@ public class ExpenditureActivity extends AppCompatActivity {
 
     /**
      * Shows a DatePickerDialog and updates the date EditText.
+     * <p>
+     *
      */
     private void showDatePicker() {
         final Calendar c = Calendar.getInstance();
@@ -91,6 +102,8 @@ public class ExpenditureActivity extends AppCompatActivity {
 
     /**
      * Validates input and saves/updates the expenditure in the database.
+     * <p>
+     *
      */
     private void saveExpenditure() {
         String desc = etDescription.getText().toString().trim();
@@ -125,12 +138,26 @@ public class ExpenditureActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Initializes the contents of the Activity's standard options menu.
+     * <p>
+     *
+     * @param menu The options menu in which you place your items.
+     * @return boolean You must return true for the menu to be displayed.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
+    /**
+     * This hook is called whenever an item in your options menu is selected.
+     * <p>
+     *
+     * @param item The menu item that was selected.
+     * @return boolean Return false to allow normal menu processing to proceed.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
