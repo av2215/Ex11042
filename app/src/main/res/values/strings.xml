@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Ex11042</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount</string>
+    <string name="category">Category</string>
+    <string name="date">Date</string>
+    <string name="save">Save</string>
+    <string name="search">Search</string>
+    <string name="add_new">Add New Expense</string>
+    <string name="credits">Credits</string>
+    <string name="min_price">Min Price</string>
+    <string name="max_price">Max Price</string>
+    <string name="sort_by">Sort By</string>
+    <string name="total_monthly">Total This Month: %1$.2f</string>
+    <string name="search_hint">Search by description...</string>
+    <string name="expense_details">Expense Details</string>
+    <string name="search_filter">Search &amp; Filter</string>
+    <string name="developed_by">Developed as part of Android Course</string>
+    <string name="student_name">Student Name: [Your Name]</string>
+    <string name="exercise_name">Exercise: Ex11042</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_add">Add Expense</string>
+    <string name="update">Update</string>
+    <string name="choose_option">Choose Option</string>
+    <string name="fill_fields">Please fill all fields</string>
 </resources>
