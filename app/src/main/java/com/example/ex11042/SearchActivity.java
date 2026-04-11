@@ -59,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
         btnDoSearch = findViewById(R.id.btnDoSearch);
         lvSearchResults = findViewById(R.id.lvSearchResults);
 
-        // Setup sort spinner
+
         ArrayAdapter<String> sortAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sortOptions);
         sortAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSort.setAdapter(sortAdapter);
@@ -82,7 +82,7 @@ public class SearchActivity extends AppCompatActivity {
         String maxStr = etMaxAmount.getText().toString().trim();
         String sortBy = spinnerSort.getSelectedItem().toString();
 
-        // Convert sortBy to DB column name
+
         String sortColumn = sortBy.equals("Date") ? DatabaseHelper.COLUMN_DATE : DatabaseHelper.COLUMN_AMOUNT;
 
         Double min = null;
